@@ -34,13 +34,14 @@
 				<input class="form-check-input me-1" type="checkbox">
 			</div>
 			<h5 class="mb-1" th:text="*{title}"></h5>
-
-
-			<div th:if="${todo.deadline < localDate.minusDays(3)}">
+			<div th:if="${todo.deadline.minusDays(3) < today && todo.deadline >= today}">
 				<span class="badge bg-warning" th:text="${#temporals.format(todo.deadline, 'yyyy/MM/dd')}"></span>
 			</div>
-			<div th:if="${todo.deadline < localDate}">
+			<div th:if="${todo.deadline < today}">
 				<span class="badge bg-danger" th:text="${#temporals.format(todo.deadline, 'yyyy/MM/dd')}"></span>
+			</div>
+			<div th:if="${today <= todo.deadline.minusDays(3)}">
+				<span class="badge bg-info" th:text="${#temporals.format(todo.deadline, 'yyyy/MM/dd')}"></span>
 			</div>
 		</div>
 	</div>

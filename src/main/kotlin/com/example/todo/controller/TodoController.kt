@@ -16,10 +16,7 @@ class TodoController(private val todoService: TodoService) {
   fun index(model: Model): String {
     val allTodos: List<Todo> = todoService.findAll()
     model.addAttribute("todos", allTodos)
-    model.addAttribute("localDate", LocalDate.now())
-    for (todo: Todo in allTodos) {
-      println(todo.deadline!! < LocalDate.now())
-    }
+    model.addAttribute("today", LocalDate.now())
     return "index"
   }
 
