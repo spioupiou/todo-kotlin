@@ -3,31 +3,24 @@ package com.example.todo.controller
 import com.example.todo.entity.Todo
 import com.example.todo.form.TodoForm
 import com.example.todo.service.TodoService
-import org.springframework.stereotype.Controller
-import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import java.time.LocalDate
+import org.springframework.web.bind.annotation.*
 
-@Controller
+@RestController
+@RequestMapping("/api/v1/todos")
+
 class TodoController(private val todoService: TodoService) {
-
-  @GetMapping("/")
-  fun index(model: Model): String {
-    val allTodos: List<Todo> = todoService.findAll()
-    model.addAttribute("todos", allTodos)
-    model.addAttribute("today", LocalDate.now())
-    return "index"
+  @GetMapping
+  fun findAll(): List<Todo> {
+    return todoService.findAll()
   }
 
   @PostMapping("/register")
-  fun register(todoForm: TodoForm): String {
-    todoService.saveTodo(todoForm)
-    return "redirect:/"
+  fun save(todoForm: TodoForm): Todo {
+    return todoService.saveTodo(todoForm)
   }
 
-  @GetMapping("/search")
-  fun search(): String {
-    return "search"
+  @PatchMapping("/{id}")
+  fun update(@PathVariable id: Long) {
+    todoService.updateTodoStatus(id)
   }
 }
