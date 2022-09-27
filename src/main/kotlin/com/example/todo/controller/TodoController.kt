@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/v1/todos")
 
 class TodoController(private val todoService: TodoService) {
+  @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
   @GetMapping
   fun findAll(): List<Todo> {
     return todoService.findAll()
