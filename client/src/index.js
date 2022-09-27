@@ -5,24 +5,29 @@ import ReactDOM from 'react-dom';
 const callRestApi = async () => {
     const response = await fetch("/api/v1/todos");
     const jsonResponse = await response.json();
-    console.log(jsonResponse);
-    return React.createElement('h1', null, JSON.stringify(jsonResponse));
+    return jsonResponse
 };
 
 const RenderResult = () => {
-  const [apiResponse, setApiResponse] = useState("Loading...");
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-      callRestApi().then(
-          result => setApiResponse(result));
+    callRestApi().then(
+      result => setTodos(result));
   },[]);
 
-  return(
-      <div>
-          <h1>Todos</h1>
-          <p>{apiResponse}</p>
-      </div>
-  );
+  return (
+    <div>
+      {console.log(todos)}
+      {todos.length > 0 && (
+        <ul>
+          {todos.map(todo => (
+            <li key={todo.id}>{todo.title}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
 };
 
 ReactDOM.render(
