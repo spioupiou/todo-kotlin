@@ -15,18 +15,26 @@ export default function Form() {
   };
 
   return (
-    <div className="container">
+    <div className="container py-3">
       <form onSubmit={handleSubmit}>
-        <input onChange={(e) => setTitle(e.target.value)}
-          type="text"
-          name="title"
-        />
-        <input onChange={(e) => setDeadline(e.target.value)}
-          type="date"
-          name="deadline"
-        />
-
-        <button>Add</button>
+        <div className="form-group mb-3">
+          <label htmlFor="title">Title</label>
+          <input onChange={(e) => setTitle(e.target.value)}
+            type="text"
+            name="title"
+            className="form-control mb-2 mr-sm-2"
+            placeholder="Task"
+          />
+        </div>
+        <div className="form-group mb-3">
+          <label htmlFor="deadline">Deadline</label>
+          <input onChange={(e) => setDeadline(e.target.value)}
+            type="date"
+            name="deadline"
+            className="form-control mb-2 mr-sm-2"
+          />
+        </div>
+        <button type="submit" className="btn btn-primary mb-2">Add</button>
       </form>
     </div>
   )
