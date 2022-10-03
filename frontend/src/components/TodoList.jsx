@@ -32,7 +32,7 @@ export default function CreateTodoList () {
           <div key={todo.id} className="d-flex w-100 justify-content-between">
             <input className="form-check-input me-1" type="checkbox" defaultChecked={todo.status} />
             {todo.title}
-            <BadgeType ={todo.deadline}/>
+            <span className="badge bg-warning">{todo.deadline}</span>
 
           </div>
         )}
