@@ -16,7 +16,7 @@ class TodoController(private val todoService: TodoService) {
   }
 
   @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
-  @PostMapping("/register")
+  @PostMapping
   fun save(@RequestBody todoForm: TodoForm): Todo {
     return todoService.saveTodo(todoForm)
   }

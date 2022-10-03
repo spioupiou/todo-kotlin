@@ -10,12 +10,14 @@ services:
   todo-backend:
     image: todo-backend:latest
     depends_on:
-      - playground-web-db
+      - todo-db
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/todo-kotlin?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
     ports:
       - 8080:8080
   todo-frontend:
     image: todo-frontend:latest
+    depends_on:
+      - todo-backend
     ports:
       - 3000:3000
