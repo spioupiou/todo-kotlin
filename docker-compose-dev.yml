@@ -8,7 +8,8 @@ services:
     ports:
       - 3306:3306
   todo-backend:
-    image: todo-backend:latest
+    build:
+      dockerfile: ./backend/backend.dockerfile
     depends_on:
       - todo-db
     environment:
@@ -16,8 +17,7 @@ services:
     ports:
       - 8080:8080
   todo-frontend:
-    image: todo-frontend:latest
-    depends_on:
-      - todo-backend
+    build:
+      dockerfile: ./frontend/frontend.dockerfile
     ports:
       - 3000:3000
