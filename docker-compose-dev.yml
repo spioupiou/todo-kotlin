@@ -7,21 +7,11 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - 3306:3306
-  todo-frontend:
-    image: todo-frontend:latest
-    ports:
-      - 3000:3000
   todo-backend:
     image: todo-backend:latest
     depends_on:
       - playground-web-db
     environment:
-      SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url": "jdbc:mysql://localhost:3306/todo-kotlin?createDatabaseIfNotExist=true",
-        "spring.datasource.username": "root",
-        "spring.datasource.password": "",
-        "spring.mvc.hiddenmethod.filter.enabled": "true",
-        "spring.sql.init.mode": "always"
-      }'
+      SPRING_DATASOURCE_URL: jdbc:mysql://playground-web-db:3306/todo-kotlin?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
     ports:
       - 8080:8080
