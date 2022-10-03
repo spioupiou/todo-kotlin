@@ -4,13 +4,13 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY frontend/package.json ./
+COPY frontend/package.json /app
 
-COPY frontend/yarn.lock ./
+COPY frontend/yarn.lock /app
 
 RUN yarn install --frozen-lockfile
 
-COPY . .
+COPY . /app
 
 EXPOSE 3000
 

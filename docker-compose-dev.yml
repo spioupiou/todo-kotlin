@@ -15,3 +15,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://playground-web-db:3306/todo-kotlin?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
     ports:
       - 8080:8080
+  todo-frontend:
+    image: todo-frontend:latest
+    ports:
+      - 3000:3000
