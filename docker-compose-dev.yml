@@ -1,6 +1,6 @@
 version: '3'
 services:
-  playground-web-db:
+  todo-db:
     image: mysql:5.7
     platform: linux/x86_64
     environment:
@@ -12,7 +12,7 @@ services:
     depends_on:
       - playground-web-db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://playground-web-db:3306/todo-kotlin?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/todo-kotlin?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
     ports:
       - 8080:8080
   todo-frontend:
