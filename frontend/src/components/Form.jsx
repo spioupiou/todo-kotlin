@@ -6,7 +6,7 @@ export default function Form() {
   const [deadline, setDeadline] = useState('');
 
   const handleSubmit = (event) => {
-    axios.post("/api/v1/todos", {
+    axios.post("http://localhost:8080/api/v1/todos", {
       title,
       deadline
     })

@@ -5,7 +5,7 @@ export default function CreateTodoList () {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/v1/todos")
+    axios.get("http://localhost:8080/api/v1/todos")
       .then((response) => {
         setTodos(response.data);
       })
