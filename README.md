@@ -8,9 +8,17 @@ Todo List made with SpringBoot/Kotlin
 - MySQL driver
 - Spring Boot DevTools
 
+### Run the API in the backend
+From the root project: `cd backend`
+`./gradlew bootRun`
+
+### Run the frontend:
+From the root project: `cd frontend`
+`yarn start`
+
+### Build the app:
+- `docker-compose -f docker-compose-dev.yml build`
+
 ### Run the app in Docker:
-- cd to backend then ./gradlew clean build
-- back to the root directory
-- docker build --file=frontend/frontend.dockerfile -t todo-frontend .
-- docker build --file=backend/backend.dockerfile -t todo-backend . 
-- docker-compose -f docker-compose-dev.yml up
+- from the root project
+- `docker-compose -f docker-compose-dev.yml up`
