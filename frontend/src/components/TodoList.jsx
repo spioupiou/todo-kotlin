@@ -13,7 +13,6 @@ export default function CreateTodoList () {
   },[]);
 
   const handleClick = (id) => {
-    console.log(id)
     axios.patch(`http://localhost:8080/api/v1/todos/${id}`)
   };
 
