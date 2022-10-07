@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import Checkbox from './Checkbox.jsx'
 
 export default function CreateTodoList () {
   const [todos, setTodos] = useState([]);
